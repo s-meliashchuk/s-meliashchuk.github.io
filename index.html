@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Пока страница — каркас с заглушками, просим поисковики её не показывать. Убрать, когда появится настоящее содержимое. -->
+<meta name="robots" content="noindex">
+<title>Siarhei Meliashchuk — Portfolio</title>
+<meta name="description" content="Portfolio of Siarhei Meliashchuk.">
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --surface: #ffffff;
+    --ink: #17181c;
+    --muted: #6a6d76;
+    --line: #e2ded4;
+    --accent: #e4572e;
+    --accent-ink: #ffffff;
+    --ph: #ece8de;
+    --radius: 18px;
+    --maxw: 1080px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111214;
+      --surface: #1a1c20;
+      --ink: #f1efe9;
+      --muted: #9a9da6;
+      --line: #2a2d33;
+      --accent: #ff7a50;
+      --accent-ink: #14110f;
+      --ph: #23262b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* Шапка */
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .top .wrap { display: flex; align-items: center; gap: 20px; height: 60px; }
+  .brand { font-weight: 700; letter-spacing: -0.01em; text-decoration: none; margin-right: auto; }
+  nav { display: flex; gap: 22px; }
+  nav a { text-decoration: none; color: var(--muted); font-size: 15px; }
+  nav a:hover { color: var(--ink); }
+  .lang {
+    display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden;
+  }
+  .lang button {
+    border: 0; background: transparent; color: var(--muted);
+    font: inherit; font-size: 13px; font-weight: 600; padding: 5px 11px; cursor: pointer;
+  }
+  .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+  /* Первый экран */
+  .hero { padding-top: 88px; padding-bottom: 72px; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 18px;
+  }
+  h1 {
+    font-size: clamp(40px, 7vw, 76px); line-height: 1.02; letter-spacing: -0.035em;
+    margin: 0 0 22px; font-weight: 800;
+  }
+  .lead { font-size: clamp(18px, 2.2vw, 22px); color: var(--muted); max-width: 660px; margin: 0 0 32px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 13px 22px; border-radius: 999px; text-decoration: none;
+    font-weight: 600; font-size: 16px; border: 1px solid var(--line); background: var(--surface);
+    transition: transform .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+
+  /* Разделы */
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -0.02em; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 34px; max-width: 640px; }
+
+  .about { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
+  .photo {
+    aspect-ratio: 1; border-radius: var(--radius); background: var(--ph);
+    display: grid; place-items: center; color: var(--muted); font-size: 14px; text-align: center; padding: 12px;
+  }
+  .about p { margin: 0 0 16px; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+  .fact { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .fact b { display: block; font-size: 26px; letter-spacing: -0.02em; }
+  .fact span { color: var(--muted); font-size: 14px; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,.10); }
+  .thumb {
+    aspect-ratio: 16 / 10; background: var(--ph);
+    display: grid; place-items: center; color: var(--muted); font-size: 14px;
+  }
+  .card .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card h3 { margin: 0; font-size: 19px; letter-spacing: -0.01em; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
+  .tag { font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--ph); color: var(--muted); }
+
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .skills h3 { margin: 0 0 10px; font-size: 17px; }
+  .skills ul { margin: 0; padding: 0; list-style: none; color: var(--muted); }
+  .skills li { padding: 7px 0; border-bottom: 1px dashed var(--line); }
+
+  .contact { text-align: center; padding: 84px 0; }
+  .contact .sub { margin-left: auto; margin-right: auto; }
+  .contact .cta { justify-content: center; }
+
+  footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--muted); font-size: 14px; }
+
+  .ph { border-bottom: 2px dotted var(--accent); }
+
+  @media (max-width: 860px) {
+    nav { display: none; }
+    .hero { padding-top: 56px; padding-bottom: 48px; }
+    .about { grid-template-columns: 1fr; }
+    .photo { max-width: 200px; }
+    .grid, .skills { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: 1fr; }
+    section { padding: 48px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .card { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Siarhei Meliashchuk</a>
+    <nav>
+      <a href="#about" data-en="About" data-ru="Обо мне">About</a>
+      <a href="#work" data-en="Work" data-ru="Проекты">Work</a>
+      <a href="#skills" data-en="Skills" data-ru="Навыки">Skills</a>
+      <a href="#contact" data-en="Contact" data-ru="Контакты">Contact</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <span class="eyebrow ph" data-en="Your role, e.g. Game Designer" data-ru="Ваша роль, например: геймдизайнер">Your role, e.g. Game Designer</span>
+    <h1>Siarhei Meliashchuk</h1>
+    <p class="lead ph" data-en="One or two sentences about what you do and what you are great at. This is the first thing a visitor reads." data-ru="Одно-два предложения о том, чем вы занимаетесь и в чём сильны. Это первое, что читает посетитель.">One or two sentences about what you do and what you are great at. This is the first thing a visitor reads.</p>
+    <div class="cta">
+      <a class="btn primary" href="#work" data-en="See my work" data-ru="Смотреть проекты">See my work</a>
+      <a class="btn" href="#contact" data-en="Get in touch" data-ru="Связаться">Get in touch</a>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <h2 data-en="About" data-ru="Обо мне">About</h2>
+      <p class="sub" data-en="A short story: who you are, your experience, what you are looking for." data-ru="Короткий рассказ: кто вы, какой у вас опыт, что вы ищете.">A short story: who you are, your experience, what you are looking for.</p>
+      <div class="about">
+        <div class="photo" data-en="Your photo" data-ru="Ваше фото">Your photo</div>
+        <div>
+          <p class="ph" data-en="First paragraph: your background and how many years you have been in the field." data-ru="Первый абзац: ваш путь и сколько лет вы в профессии.">First paragraph: your background and how many years you have been in the field.</p>
+          <p class="ph" data-en="Second paragraph: what kind of projects you enjoy and what you bring to a team." data-ru="Второй абзац: какие проекты вам интересны и что вы даёте команде.">Second paragraph: what kind of projects you enjoy and what you bring to a team.</p>
+          <div class="facts">
+            <div class="fact"><b>00</b><span data-en="years of experience" data-ru="лет опыта">years of experience</span></div>
+            <div class="fact"><b>00</b><span data-en="projects shipped" data-ru="выпущенных проектов">projects shipped</span></div>
+            <div class="fact"><b>00</b><span data-en="a number you are proud of" data-ru="цифра, которой вы гордитесь">a number you are proud of</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <h2 data-en="Selected work" data-ru="Избранные проекты">Selected work</h2>
+      <p class="sub" data-en="Three to six best projects. Each card: picture, title, your role, result." data-ru="От трёх до шести лучших проектов. В каждой карточке: картинка, название, ваша роль, результат.">Three to six best projects. Each card: picture, title, your role, result.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="thumb" data-en="Picture or video" data-ru="Картинка или видео">Picture or video</div>
+          <div class="body">
+            <h3 data-en="Project one" data-ru="Проект 1">Project one</h3>
+            <p data-en="What it is, what you did, what came out of it." data-ru="Что это, что сделали вы, какой получился результат.">What it is, what you did, what came out of it.</p>
+            <div class="tags"><span class="tag" data-en="Role" data-ru="Роль">Role</span><span class="tag" data-en="Year" data-ru="Год">Year</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb" data-en="Picture or video" data-ru="Картинка или видео">Picture or video</div>
+          <div class="body">
+            <h3 data-en="Project two" data-ru="Проект 2">Project two</h3>
+            <p data-en="What it is, what you did, what came out of it." data-ru="Что это, что сделали вы, какой получился результат.">What it is, what you did, what came out of it.</p>
+            <div class="tags"><span class="tag" data-en="Role" data-ru="Роль">Role</span><span class="tag" data-en="Year" data-ru="Год">Year</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb" data-en="Picture or video" data-ru="Картинка или видео">Picture or video</div>
+          <div class="body">
+            <h3 data-en="Project three" data-ru="Проект 3">Project three</h3>
+            <p data-en="What it is, what you did, what came out of it." data-ru="Что это, что сделали вы, какой получился результат.">What it is, what you did, what came out of it.</p>
+            <div class="tags"><span class="tag" data-en="Role" data-ru="Роль">Role</span><span class="tag" data-en="Year" data-ru="Год">Year</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2 data-en="Skills" data-ru="Навыки">Skills</h2>
+      <p class="sub" data-en="Group what you can do into two or three columns." data-ru="Сгруппируйте то, что вы умеете, в две-три колонки.">Group what you can do into two or three columns.</p>
+      <div class="skills">
+        <div>
+          <h3 data-en="Group one" data-ru="Группа 1">Group one</h3>
+          <ul><li data-en="Skill" data-ru="Навык">Skill</li><li data-en="Skill" data-ru="Навык">Skill</li><li data-en="Skill" data-ru="Навык">Skill</li></ul>
+        </div>
+        <div>
+          <h3 data-en="Group two" data-ru="Группа 2">Group two</h3>
+          <ul><li data-en="Skill" data-ru="Навык">Skill</li><li data-en="Skill" data-ru="Навык">Skill</li><li data-en="Skill" data-ru="Навык">Skill</li></ul>
+        </div>
+        <div>
+          <h3 data-en="Tools" data-ru="Инструменты">Tools</h3>
+          <ul><li data-en="Tool" data-ru="Инструмент">Tool</li><li data-en="Tool" data-ru="Инструмент">Tool</li><li data-en="Tool" data-ru="Инструмент">Tool</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2 data-en="Let’s talk" data-ru="Давайте поговорим">Let’s talk</h2>
+      <p class="sub" data-en="Tell visitors how to reach you. The buttons below are placeholders." data-ru="Расскажите, как с вами связаться. Кнопки ниже пока заглушки.">Tell visitors how to reach you. The buttons below are placeholders.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact" data-en="Email" data-ru="Почта">Email</a>
+        <a class="btn" href="#contact">LinkedIn</a>
+        <a class="btn" href="#contact">Telegram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year">2026</span> Siarhei Meliashchuk</div>
+</footer>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.lang button');
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+      });
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.dataset.lang); });
+    });
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    setLang(saved || ((navigator.language || '').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>

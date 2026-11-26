@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siarhei Meliashchuk — Executive Producer · Game Product Leader</title>
+<meta name="description" content="Executive Producer with 10+ years in gamedev. Building studios, leading puzzle & hybrid-casual products, LiveOps, RnD prototyping. Warsaw, Poland.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e0f14; --bg2:#14161d; --card:#1a1d26; --card2:#20242f;
+  --text:#eef0f4; --muted:#9aa1af; --line:#2a2f3c;
+  --accent:#e8365f; --accent2:#ff7a59; --gold:#ffc24b;
+  --qa:#ffc24b; --pm:#ff6b6b; --pdm:#a06bff; --exec:#2dd4a7;
+  --r:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Poppins',system-ui,-apple-system,sans-serif;line-height:1.6;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 5vw;background:rgba(14,15,20,.75);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-bottom-color:var(--line)}
+.logo{font-weight:800;font-size:20px;letter-spacing:.5px;text-decoration:none;color:var(--text)}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--accent);color:#fff!important;padding:8px 18px;border-radius:99px;font-weight:600}
+.nav-cta:hover{filter:brightness(1.1)}
+.burger{display:none;background:none;border:none;color:var(--text);font-size:26px;cursor:pointer}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:120px 5vw 60px;overflow:hidden}
+.hero::before{content:'';position:absolute;width:720px;height:720px;border-radius:50%;right:-200px;top:-200px;
+  background:radial-gradient(circle,rgba(232,54,95,.16),transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;left:-180px;bottom:-180px;
+  background:radial-gradient(circle,rgba(160,107,255,.12),transparent 65%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;width:100%}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.kicker::before{content:'';width:36px;height:2px;background:var(--accent)}
+h1{font-size:clamp(38px,5.2vw,64px);font-weight:800;line-height:1.08;margin-bottom:10px}
+h1 .accent{background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-role{font-family:'Caveat',cursive;font-size:clamp(26px,3vw,38px);color:var(--gold);margin-bottom:18px}
+.hero p.lead{color:var(--muted);font-size:17px;max-width:560px;margin-bottom:30px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:99px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s,filter .2s;border:none;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(100deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 10px 30px rgba(232,54,95,.35)}
+.btn-ghost{background:transparent;color:var(--text);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.hero-meta b{color:var(--text);font-weight:600}
+.hero-photo{position:relative;justify-self:center}
+.hero-photo .frame{width:min(360px,72vw);aspect-ratio:1/1;border-radius:32px;overflow:hidden;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);transform:rotate(2deg);transition:transform .4s}
+.hero-photo:hover .frame{transform:rotate(0deg) scale(1.02)}
+.hero-photo .frame img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.hero-photo::before{content:'';position:absolute;inset:-14px;border-radius:40px;border:2px dashed rgba(232,54,95,.4);transform:rotate(-2deg);pointer-events:none}
+.badge-float{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 16px;font-size:13px;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.4);white-space:nowrap;animation:float 5s ease-in-out infinite}
+.badge-float small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+.bf1{top:-8px;left:-40px;animation-delay:0s}
+.bf2{bottom:30px;right:-30px;animation-delay:1.6s}
+.bf3{bottom:-24px;left:-10px;animation-delay:3.1s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* ---------- SECTIONS ---------- */
+section{padding:90px 5vw;position:relative}
+.wrap{max-width:1200px;margin:0 auto}
+.sec-kicker{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h2{font-size:clamp(28px,3.6vw,42px);font-weight:800;margin-bottom:14px}
+.sec-sub{color:var(--muted);max-width:640px;margin-bottom:48px}
+
+/* ---------- STATS ---------- */
+.stats{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:26px;max-width:1200px;margin:0 auto}
+.stat{text-align:center}
+.stat .num{font-size:clamp(30px,3.4vw,44px);font-weight:800;background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lbl{color:var(--muted);font-size:13px;margin-top:4px}
+
+/* ---------- TIMELINE ---------- */
+.tl-legend{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:44px}
+.tl-legend span{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.tl-legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
+.timeline{position:relative;margin-left:8px}
+.timeline::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:3px;border-radius:3px;
+  background:linear-gradient(180deg,var(--qa),var(--pm) 32%,var(--pdm) 62%,var(--exec))}
+.tl-item{position:relative;padding:0 0 46px 68px;opacity:0;transform:translateY(28px);transition:opacity .6s,transform .6s}
+.tl-item.visible{opacity:1;transform:none}
+.tl-dot{position:absolute;left:8px;top:4px;width:26px;height:26px;border-radius:50%;border:4px solid var(--bg);
+  box-shadow:0 0 0 2px currentColor;background:currentColor;cursor:pointer;transition:transform .25s}
+.tl-item:hover .tl-dot{transform:scale(1.25)}
+.tl-year{display:inline-block;font-size:13px;font-weight:700;padding:4px 14px;border-radius:99px;background:var(--card);border:1px solid var(--line);margin-bottom:10px;color:var(--gold)}
+.tl-chapter{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.tl-title{font-size:20px;font-weight:700}
+.tl-title small{color:var(--muted);font-weight:500;font-size:15px}
+.tl-extra{color:var(--muted);font-size:14px;margin-top:6px;max-width:640px}
+.tl-roles{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.role-pill{font-size:12.5px;font-weight:600;padding:5px 13px;border-radius:99px;background:var(--card);border:1px solid var(--line);transition:border-color .2s,transform .2s}
+.role-pill:hover{transform:translateY(-2px)}
+.c-qa{color:var(--qa)} .c-pm{color:var(--pm)} .c-pdm{color:var(--pdm)} .c-exec{color:var(--exec)}
+.p-qa{border-color:rgba(255,194,75,.4)} .p-pm{border-color:rgba(255,107,107,.4)} .p-pdm{border-color:rgba(160,107,255,.45)} .p-exec{border-color:rgba(45,212,167,.45)}
+
+/* ---------- EXPERIENCE ---------- */
+.exp-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:18px;overflow:hidden;
+  opacity:0;transform:translateY(28px);transition:opacity .6s,transform .6s,border-color .3s}
+.exp-card.visible{opacity:1;transform:none}
+.exp-card:hover{border-color:rgba(232,54,95,.45)}
+.exp-head{display:grid;grid-template-columns:auto 1fr auto auto;gap:20px;align-items:center;padding:24px 28px;cursor:pointer;user-select:none}
+.exp-logo{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;color:#fff;flex-shrink:0}
+.exp-head h3{font-size:19px;font-weight:700}
+.exp-head .co{color:var(--muted);font-size:14px;font-weight:500}
+.exp-dates{font-size:13.5px;color:var(--muted);font-weight:600;white-space:nowrap}
+.exp-toggle{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;
+  font-size:18px;color:var(--muted);transition:transform .35s,background .3s,color .3s;flex-shrink:0}
+.exp-card.open .exp-toggle{transform:rotate(45deg);background:var(--accent);border-color:var(--accent);color:#fff}
+.exp-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.exp-inner{padding:0 28px 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px;border-top:1px solid var(--line);padding-top:24px}
+.exp-col h4{font-size:12.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.exp-col ul{list-style:none}
+.exp-col li{position:relative;padding-left:18px;font-size:14px;color:#c6ccd8;margin-bottom:8px}
+.exp-col li::before{content:'▸';position:absolute;left:0;color:var(--accent)}
+.exp-col li.win::before{content:'★';color:var(--gold)}
+.exp-tools{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;padding-top:6px}
+.tool-chip{font-size:12px;padding:4px 12px;border-radius:99px;background:var(--card2);border:1px solid var(--line);color:var(--muted)}
+
+/* ---------- SKILLS ---------- */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.skill-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:transform .3s,border-color .3s;
+  opacity:0;transform:translateY(28px)}
+.skill-card.visible{opacity:1;transform:none;transition:opacity .6s,transform .6s,border-color .3s}
+.skill-card:hover{transform:translateY(-6px);border-color:rgba(232,54,95,.45)}
+.skill-icon{font-size:30px;margin-bottom:14px}
+.skill-card h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.skill-card p{color:var(--muted);font-size:14px}
+
+/* ---------- CERTS ---------- */
+.certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:56px}
+.cert{display:flex;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;transition:border-color .3s}
+.cert:hover{border-color:rgba(255,194,75,.5)}
+.cert .ci{width:44px;height:44px;border-radius:12px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.cert b{font-size:15px;display:block}
+.cert span{color:var(--muted);font-size:13px}
+.edu-lang{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+.edu-box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.edu-box h3{font-size:16px;font-weight:700;margin-bottom:14px;color:var(--gold)}
+.edu-box p{color:#c6ccd8;font-size:14.5px}
+.edu-box .langs{display:flex;flex-direction:column;gap:10px}
+.lang-row{display:flex;justify-content:space-between;font-size:14px;color:#c6ccd8}
+.lang-row span:last-child{color:var(--muted)}
+
+/* ---------- CONTACT ---------- */
+.contact{background:var(--bg2);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.contact h2 .accent{background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.contact-links{display:flex;flex-direction:column;gap:14px}
+.contact-link{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;text-decoration:none;color:var(--text);transition:transform .25s,border-color .25s}
+.contact-link:hover{transform:translateX(6px);border-color:var(--accent)}
+.contact-link .ci{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--card2);flex-shrink:0}
+.contact-link b{display:block;font-size:15px}
+.contact-link span{color:var(--muted);font-size:13px}
+footer{padding:26px 5vw;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:70px}
+  .hero-photo{order:-1}
+  .stats-grid{grid-template-columns:repeat(3,1fr);gap:30px}
+  .exp-inner{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .certs-grid{grid-template-columns:1fr}
+  .edu-lang{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .bf1{left:-6px}.bf2{right:-6px}
+}
+@media(max-width:640px){
+  .nav-links{position:fixed;top:60px;right:0;background:var(--bg2);flex-direction:column;padding:24px;gap:18px;border:1px solid var(--line);border-radius:0 0 0 18px;transform:translateX(110%);transition:transform .3s}
+  .nav-links.open{transform:none}
+  .burger{display:block}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .skills-grid{grid-template-columns:1fr}
+  .exp-head{grid-template-columns:auto 1fr auto;gap:14px;padding:20px}
+  .exp-dates{display:none}
+  .exp-inner{padding:0 20px 22px;padding-top:20px}
+  section{padding:70px 6vw}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="#top">S<span>M</span>.</a>
+  <button class="burger" id="burger">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#journey">Journey</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a class="nav-cta" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <div class="kicker">Executive Producer · Gamedev</div>
+      <h1>Siarhei<br><span class="accent">Meliashchuk</span></h1>
+      <div class="hero-role">I build games, teams &amp; studios</div>
+      <p class="lead">Product leader with <b>10+ years in game development</b>. Proven track record in leading, defining product strategy and scaling operations — from QA engineer to building a 20-person studio from an investment idea. Passionate about engaging experiences, data-driven performance and high-performing teams.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="mailto:serge.meleshchuk@gmail.com">✉ Get in touch</a>
+        <a class="btn btn-ghost" href="cvdoc" download="Siarhei_Meliashchuk_CV.pdf">⬇ Download CV</a>
+      </div>
+      <div class="hero-meta">
+        <div>📍 <b>Warsaw, Poland</b></div>
+        <div>💼 <b>Nova Sphere / Sigma Software</b></div>
+        <div>🌐 EN · PL · BEL · RU · UKR</div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame"><img src="photo.jpg" alt="Siarhei Meliashchuk"></div>
+      <div class="badge-float bf1">🚀 Studio built in 3 months<small>20 people hired</small></div>
+      <div class="badge-float bf2">📉 CPI $6 → $1.2<small>Hexa Puzzle UA</small></div>
+      <div class="badge-float bf3">🧩 45 prototypes / 4 months<small>WannaPlay RnD</small></div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="num" data-count="10" data-suffix="+">0</div><div class="lbl">years in gamedev</div></div>
+    <div class="stat"><div class="num" data-count="6">0</div><div class="lbl">companies · QA → Exec</div></div>
+    <div class="stat"><div class="num" data-count="45">0</div><div class="lbl">prototypes / 4 months</div></div>
+    <div class="stat"><div class="num" data-count="25">0</div><div class="lbl">LiveOps events / year</div></div>
+    <div class="stat"><div class="num" data-count="20" data-suffix="+">0</div><div class="lbl">Unity Core modules</div></div>
+    <div class="stat"><div class="num" data-count="1" data-prefix="$" data-suffix="M">0</div><div class="lbl">UA spend managed</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-kicker">About me</div>
+    <h2>Balancing creativity with business impact</h2>
+    <p class="sec-sub">Experienced product leader with over 10 years in the game industry. I've walked the full path — QA → Project Management → Product Management → Executive Producer — which lets me speak the same language with engineers, designers, artists, analysts and investors.</p>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">🚀</div><h3>Strategic &amp; Executive Leadership</h3><p>Investment business plans (5/10 years), PnL control, board &amp; investor reporting, C-level alignment, studio growth strategy.</p></div>
+      <div class="skill-card"><div class="skill-icon">🎮</div><h3>Game Industry Expertise</h3><p>Puzzle, hybrid-casual, hyper-casual, music apps &amp; edutainment. Full cycle: pitch → prototype → soft launch → global → LiveOps.</p></div>
+      <div class="skill-card"><div class="skill-icon">👥</div><h3>Cross-functional Leadership</h3><p>Built and led teams up to 25 people: GP, GD, Art, QA, Analytics, Motion &amp; ASO. Recruiting, onboarding, PDPs, 0% leave rate.</p></div>
+      <div class="skill-card"><div class="skill-icon">📊</div><h3>Product &amp; User Analytics</h3><p>A/B tests, cohorts, funnels, ROMI/ROAS predictions, ARPDAU/LTV growth. Amplitude, Firebase, AppMetrica, Tableau, internal BI.</p></div>
+      <div class="skill-card"><div class="skill-icon">⚙️</div><h3>Technical &amp; Creative Understanding</h3><p>Unity template &amp; module architecture, GDD/LD, screen flows, creative research, AI-generated UA videos, ASO.</p></div>
+      <div class="skill-card"><div class="skill-icon">💬</div><h3>Process &amp; Methodology</h3><p>Scrum, SAFe, Kanban. Certified Scrum Master, SAFe Agilist &amp; RTE. Release trains, velocity &amp; capacity planning, risk management.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY / TIMELINE -->
+<section id="journey" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-kicker">Career journey</div>
+    <h2>2009 → 2026: four chapters</h2>
+    <p class="sec-sub">Every chapter added a new altitude: quality → delivery → product → studio. Hover the dots, explore the roles.</p>
+    <div class="tl-legend">
+      <span><i style="background:var(--qa)"></i> Chapter 1 · Quality Assurance</span>
+      <span><i style="background:var(--pm)"></i> Chapter 2 · Project Management</span>
+      <span><i style="background:var(--pdm)"></i> Chapter 3 · Product &amp; RnD</span>
+      <span><i style="background:var(--exec)"></i> Chapter 4 · Executive</span>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot c-qa"></div>
+        <div class="tl-year">2009</div>
+        <div class="tl-chapter c-qa">Chapter 1 · QA — Education</div>
+        <div class="tl-title">Itransition <small>· internship → QA Engineer → Middle QA</small></div>
+        <div class="tl-extra">Academy of Public Administration + QA Academy. First steps in software quality.</div>
+        <div class="tl-roles"><span class="role-pill p-qa">QA Internship</span><span class="role-pill p-qa">QA Engineer</span><span class="role-pill p-qa">Middle QA</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot c-qa"></div>
+        <div class="tl-year">2011</div>
+        <div class="tl-chapter c-qa">New roles</div>
+        <div class="tl-title">Itransition <small>· growing into leadership</small></div>
+        <div class="tl-extra">Bachelor's degree in Management of Information Resources. Mentor at QA Academy.</div>
+        <div class="tl-roles"><span class="role-pill p-qa">Senior QA Specialist</span><span class="role-pill p-exec">QA Manager</span><span class="role-pill p-exec">QA Team Lead</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot c-pm"></div>
+        <div class="tl-year">2014</div>
+        <div class="tl-chapter c-pm">Chapter 2 · Project Management</div>
+        <div class="tl-title">Webmartsoft <small>· from QA to delivery</small></div>
+        <div class="tl-extra">English B1. Switched the track from quality to delivery and analysis.</div>
+        <div class="tl-roles"><span class="role-pill p-pm">Business Analyst</span><span class="role-pill p-exec">Head of QA</span><span class="role-pill p-pm">Project Manager</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot c-pm"></div>
+        <div class="tl-year">2016</div>
+        <div class="tl-chapter c-pm">Build dream team</div>
+        <div class="tl-title">Gismart <small>· music apps and games</small></div>
+        <div class="tl-extra">Scrum, Kanban &amp; SAFe certifications, English B2. Built a top-1 velocity team with 0% leave rate.</div>
+        <div class="tl-roles"><span class="role-pill p-pm">Project Manager</span><span class="role-pill p-pm">Lead Project Manager</span><span class="role-pill p-pm">SAFe RTE Manager</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot c-pdm"></div>
+        <div class="tl-year">2020</div>
+        <div class="tl-chapter c-pdm">Chapter 3 · PDM — new opps &amp; RnD</div>
+        <div class="tl-title">WannaPlay <small>· producing at scale</small></div>
+        <div class="tl-extra">GoPractice simulator. 3 teams built, 45 prototypes per 4 months, up to $1M spend.</div>
+        <div class="tl-roles"><span class="role-pill p-pdm">Product Manager</span><span class="role-pill p-pdm">Game Producer</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot c-pdm"></div>
+        <div class="tl-year">2022</div>
+        <div class="tl-chapter c-pdm">Meta games · puzzle genre</div>
+        <div class="tl-title">Appsulove <small>· RnD &amp; portfolio tech</small></div>
+        <div class="tl-extra">Business coaching course. Unity Core: 20+ portfolio-wide modules, launch time 3 months → 2 weeks.</div>
+        <div class="tl-roles"><span class="role-pill p-pdm">Product Manager</span><span class="role-pill p-pdm">Lead RnD Producer</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot c-pdm"></div>
+        <div class="tl-year">2023</div>
+        <div class="tl-chapter c-pdm">LiveOps events</div>
+        <div class="tl-title">Severex <small>· LiveOps at portfolio scale</small></div>
+        <div class="tl-extra">Stratoplan Team Leadership Conf. Unity LiveOps module in 3 teams (6 games), ARPDAU +10–15%.</div>
+        <div class="tl-roles"><span class="role-pill p-pdm">Product Manager</span><span class="role-pill p-exec">LiveOps Director</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot c-exec"></div>
+        <div class="tl-year">2025</div>
+        <div class="tl-chapter c-exec">Chapter 4 · Lead team of teams</div>
+        <div class="tl-title">Nova Sphere · Sigma Software <small>· building a studio</small></div>
+        <div class="tl-extra">Polish A1→A2. Executive Producer: studio from an investment idea — hiring, budgeting, publishing, reporting.</div>
+        <div class="tl-roles"><span class="role-pill p-exec">Executive Producer</span></div>
+      </div>
+      <div class="tl-item"><div class="tl-dot c-exec"></div>
+        <div class="tl-year">2026</div>
+        <div class="tl-chapter c-exec">Now</div>
+        <div class="tl-title">Open to the next big challenge <small>· executive producing &amp; studio leadership</small></div>
+        <div class="tl-roles"><span class="role-pill p-exec">Let's talk →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-kicker">Experience</div>
+    <h2>Click a company — see the full story</h2>
+    <p class="sec-sub">Products, key activities and measurable results for every role. ★ marks the wins I'm most proud of.</p>
+
+    <!-- NOVA SPHERE -->
+    <div class="exp-card open">
+      <div class="exp-head" role="button" tabindex="0">
+        <div class="exp-logo" style="background:linear-gradient(120deg,#2dd4a7,#149e7d)">NS</div>
+        <div><h3>Executive Producer</h3><div class="co">Nova Sphere Studio · Sigma Software</div></div>
+        <div class="exp-dates">2025 — now</div>
+        <div class="exp-toggle">+</div>
+      </div>
+      <div class="exp-body"><div class="exp-inner">
+        <div class="exp-col"><h4>Products</h4><ul>
+          <li>Hexa Puzzle · Cooking Puzzle</li><li>Cat Shelter Game · Screw Toy Puzzle</li>
+          <li>Meta: location building, restaurants acquiring, character progression</li>
+          <li>LiveOps: Battle Pass, Egg/Flower/Fruits Hunt</li><li>Content: characters &amp; visitors</li>
+        </ul></div>
+        <div class="exp-col"><h4>Key activities</h4><ul>
+          <li>Building a new studio from the investment-idea stage</li>
+          <li>Recruiting &amp; onboarding the whole team (20 people)</li>
+          <li>Investment business plan for 5/10 years</li>
+          <li>PnL control · reporting to the board and investor</li>
+          <li>Producing, developing &amp; acquiring games for the portfolio</li>
+          <li>Roadmap &amp; release management · PDPs for GP/GD/Art</li>
+        </ul></div>
+        <div class="exp-col"><h4>Results</h4><ul>
+          <li class="win">CPI decreased from $6 to $1.2 for Hexa</li>
+          <li class="win">Studio built within 3 months, 20 people hired</li>
+          <li class="win">First playable game in 1 month</li>
+          <li>3 games developed with Supersonic publishing</li>
+          <li>Appodeal, CAS, Adspawn cooperation + Motiv traffic</li>
+          <li>Supported acquiring of 5 titles · AI-generated UA videos</li>
+        </ul></div>
+        <div class="exp-tools">
+          <span class="tool-chip">Discord</span><span class="tool-chip">Miro</span><span class="tool-chip">Notion</span><span class="tool-chip">Atlassian</span><span class="tool-chip">Figma</span><span class="tool-chip">AppMagic</span><span class="tool-chip">Sensor Tower</span><span class="tool-chip">Applovin MAX</span><span class="tool-chip">Adjust</span><span class="tool-chip">Appodeal</span><span class="tool-chip">CAS.AI</span><span class="tool-chip">Firebase</span><span class="tool-chip">GA</span><span class="tool-chip">Tableau</span>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- SEVEREX -->
+    <div class="exp-card">
+      <div class="exp-head" role="button" tabindex="0">
+        <div class="exp-logo" style="background:linear-gradient(120deg,#3d9be9,#2563eb)">SX</div>
+        <div><h3>Product Manager → LiveOps Director</h3><div class="co">Severex</div></div>
+        <div class="exp-dates">2023 — 2025</div>
+        <div class="exp-toggle">+</div>
+      </div>
+      <div class="exp-body"><div class="exp-inner">
+        <div class="exp-col"><h4>Products</h4><ul>
+          <li>Jigsaw Puzzle · Block Puzzle (Pindoku)</li><li>Word Connect &amp; Trivia games</li>
+          <li>Unity LiveOps Management Module</li>
+          <li>3 event generations: local, server, dungeon</li>
+          <li>25 LO events scheduled for 2025 · content · analytics · rewards</li>
+        </ul></div>
+        <div class="exp-col"><h4>Key activities</h4><ul>
+          <li>Puzzle market research · feature backlog &amp; priorities</li>
+          <li>Roadmap &amp; planning · content, art, design review</li>
+          <li>A/B tests config &amp; evaluation · ads &amp; IAP monetization</li>
+          <li>LiveOps GDD, calendar, incident management</li>
+          <li>Release train alignment · ASO + LO events setup</li>
+          <li>Data analytics for event stages · expansion pitches</li>
+        </ul></div>
+        <div class="exp-col"><h4>Results</h4><ul>
+          <li class="win">Pindoku games RR30D from 0 to 5–6%</li>
+          <li class="win">ARPDAU +10–15% with LiveOps events on</li>
+          <li>3 types of LO events produced: location, race, dungeon</li>
+          <li>LiveOps plan &amp; content for 25 events per year</li>
+          <li>LO module integrated in 3 teams (6 games)</li>
+        </ul></div>
+        <div class="exp-tools">
+          <span class="tool-chip">Miro</span><span class="tool-chip">Atlassian</span><span class="tool-chip">Draw.io</span><span class="tool-chip">Figma</span><span class="tool-chip">AppMagic</span><span class="tool-chip">Sensor Tower</span><span class="tool-chip">Applovin MAX</span><span class="tool-chip">Adjust</span><span class="tool-chip">Firebase</span><span class="tool-chip">Tableau</span><span class="tool-chip">AWS · CDN · FTP</span>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- APPSULOVE -->
+    <div class="exp-card">
+      <div class="exp-head" role="button" tabindex="0">
+        <div class="exp-logo" style="background:linear-gradient(120deg,#e8365f,#b91c46)">AL</div>
+        <div><h3>Product Manager → Lead RnD Producer</h3><div class="co">Appsulove</div></div>
+        <div class="exp-dates">2022 — 2023</div>
+        <div class="exp-toggle">+</div>
+      </div>
+      <div class="exp-body"><div class="exp-inner">
+        <div class="exp-col"><h4>Products</h4><ul>
+          <li>Unity Core — portfolio-wide features</li>
+          <li>META layer · Battle Pass · Endless Promo</li>
+          <li>Purchase Manager · soft currency · boosters · addressables</li>
+          <li>Level-based Unity template · Sweet Sort</li>
+          <li>Hybrid-casual: parking, sorting, linking, 2048</li>
+        </ul></div>
+        <div class="exp-col"><h4>Key activities</h4><ul>
+          <li>Unity Core team, process &amp; priorities</li>
+          <li>MetaLayer GDD &amp; requirements · market research</li>
+          <li>Pitch, kick-off, planning &amp; estimates</li>
+          <li>Product features scope &amp; roadmap · GDD/UI/Art review</li>
+          <li>A/B tests · marketing &amp; monetization sync</li>
+          <li>Creatives requirements · analytics &amp; funnels reports</li>
+        </ul></div>
+        <div class="exp-col"><h4>Results</h4><ul>
+          <li class="win">Launch speed-up: 3 months → 2 weeks per new game</li>
+          <li class="win">ARPUD0 growth: +300%</li>
+          <li>20+ Unity Core modules within half a year</li>
+          <li>12 RnD prototypes launched</li>
+          <li>12 new games per 6 months → 2 successful titles</li>
+        </ul></div>
+        <div class="exp-tools">
+          <span class="tool-chip">Asana</span><span class="tool-chip">Jira</span><span class="tool-chip">Confluence</span><span class="tool-chip">Miro</span><span class="tool-chip">Sympli</span><span class="tool-chip">AppAnnie</span><span class="tool-chip">Sensor Tower</span><span class="tool-chip">Applovin MAX</span><span class="tool-chip">AppsFlyer</span><span class="tool-chip">Amplitude</span><span class="tool-chip">Firebase</span><span class="tool-chip">AppMetrica</span><span class="tool-chip">BI: cohorts · eCPM · ROAS · UA predictions</span>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- WANNAPLAY -->
+    <div class="exp-card">
+      <div class="exp-head" role="button" tabindex="0">
+        <div class="exp-logo" style="background:linear-gradient(120deg,#111,#3a3a3a);border:1px solid var(--line)">WP</div>
+        <div><h3>Producer · Product Manager</h3><div class="co">WannaPlay</div></div>
+        <div class="exp-dates">2020 — 2022</div>
+        <div class="exp-toggle">+</div>
+      </div>
+      <div class="exp-body"><div class="exp-inner">
+        <div class="exp-col"><h4>Teams &amp; genres</h4><ul>
+          <li>Built 3 successful teams: Growth (16p), RnD (12p), ASMR (25p)</li>
+          <li>HOG &amp; detective comics · match &amp; merge</li>
+          <li>Brain, art &amp; block puzzles</li>
+          <li>ASMR &amp; fidget toys · a bit of midcore (Archero-like)</li>
+          <li>Hyper-casual, casual &amp; publishing</li>
+        </ul></div>
+        <div class="exp-col"><h4>Key activities</h4><ul>
+          <li>Market research &amp; grooming of ideas</li>
+          <li>Pitch, kick-off, planning &amp; estimates</li>
+          <li>Strategy, team &amp; product plan · roadmap</li>
+          <li>GDD / UI / Art / monetization review</li>
+          <li>Cross-unit process &amp; communication flow</li>
+          <li>UA metrics &amp; KPI control · budget &amp; capacity</li>
+        </ul></div>
+        <div class="exp-col"><h4>Results</h4><ul>
+          <li class="win">45 prototypes tested per 4 months · 9% success rate</li>
+          <li class="win">Max LTV growth: ×10 in 2 months</li>
+          <li>UA spend managed: up to $1M</li>
+          <li>4 global launches in the last year</li>
+          <li>Fun fact: every game was cloned multiple times 🙂</li>
+        </ul></div>
+        <div class="exp-tools">
+          <span class="tool-chip">Jira</span><span class="tool-chip">Confluence</span><span class="tool-chip">Trello</span><span class="tool-chip">Miro</span><span class="tool-chip">Notion</span><span class="tool-chip">Figma</span><span class="tool-chip">Zeplin</span><span class="tool-chip">Apptica</span><span class="tool-chip">Sensortower</span><span class="tool-chip">Applovin MAX</span><span class="tool-chip">Mopub</span><span class="tool-chip">AppsFlyer</span><span class="tool-chip">Adjust</span><span class="tool-chip">Amplitude</span><span class="tool-chip">AppMetrica</span><span class="tool-chip">Internal BI</span>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- GISMART -->
+    <div class="exp-card">
+      <div class="exp-head" role="button" tabindex="0">
+        <div class="exp-logo" style="background:linear-gradient(120deg,#8b2f8f,#c026d3)">G</div>
+        <div><h3>Project Manager → Lead PM · SAFe RTE</h3><div class="co">Gismart — music apps and games</div></div>
+        <div class="exp-dates">2016 — 2020</div>
+        <div class="exp-toggle">+</div>
+      </div>
+      <div class="exp-body"><div class="exp-inner">
+        <div class="exp-col"><h4>Products</h4><ul>
+          <li>Music instruments: simulators &amp; rhythm games</li>
+          <li>Casual games: mini-games, brain puzzles, pixel art</li>
+          <li>Edutainment &amp; wellness products</li>
+          <li>Team: 12–16 people · Scrum, SAFe, Kanban</li>
+          <li>Monetization: ads (banner/inter/rewards) &amp; subscriptions</li>
+        </ul></div>
+        <div class="exp-col"><h4>Responsibilities</h4><ul>
+          <li>People performance &amp; PDP management</li>
+          <li>Ballpark estimation &amp; budget planning</li>
+          <li>Roadmap &amp; delivery prediction · velocity &amp; capacity</li>
+          <li>Process establishment · knowledge transfer</li>
+          <li>Conflict solving · bottleneck cutting</li>
+          <li>Coaching &amp; mentoring the PM team</li>
+        </ul></div>
+        <div class="exp-col"><h4>Results</h4><ul>
+          <li class="win">0% leave rate from my team</li>
+          <li class="win">Top-1 team by velocity (story points)</li>
+          <li>First team to test &amp; apply any process/tech innovation</li>
+          <li>Largest part of tech debts &amp; enablers developed</li>
+          <li>3D photo edit, video streaming, widgets discovered fast</li>
+          <li>Dream team shaped → became core of 2 new companies</li>
+        </ul></div>
+        <div class="exp-tools">
+          <span class="tool-chip">Scrum Master</span><span class="tool-chip">Release Train Engineer</span><span class="tool-chip">Jira</span><span class="tool-chip">Confluence</span><span class="tool-chip">Miro</span><span class="tool-chip">Store featuring</span><span class="tool-chip">LiveOps</span><span class="tool-chip">Risk management</span>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- ITRANSITION -->
+    <div class="exp-card">
+      <div class="exp-head" role="button" tabindex="0">
+        <div class="exp-logo" style="background:linear-gradient(120deg,#ffc24b,#f59e0b);color:#1a1d26">IT</div>
+        <div><h3>QA Engineer → QA Manager → PM</h3><div class="co">Itransition · Webmartsoft</div></div>
+        <div class="exp-dates">2009 — 2016</div>
+        <div class="exp-toggle">+</div>
+      </div>
+      <div class="exp-body"><div class="exp-inner">
+        <div class="exp-col"><h4>The foundation</h4><ul>
+          <li>QA Academy → internship → QA Engineer → Middle QA</li>
+          <li>Senior QA Specialist · QA Manager · QA Team Lead</li>
+          <li>Mentor at QA Academy</li>
+        </ul></div>
+        <div class="exp-col"><h4>Transition to management</h4><ul>
+          <li>Business Analyst at Webmartsoft</li>
+          <li>Head of QA · first Project Manager role</li>
+          <li>Bachelor's degree — Management of Information Resources</li>
+        </ul></div>
+        <div class="exp-col"><h4>Why it matters</h4><ul>
+          <li class="win">Quality-first mindset carried through every later role</li>
+          <li>Deep empathy for engineering &amp; testing teams</li>
+          <li>Process thinking from the ground up</li>
+        </ul></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & CERTS -->
+<section id="education" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-kicker">Education &amp; certification</div>
+    <h2>Always learning</h2>
+    <p class="sec-sub">Formal education, professional certifications and continuous courses across product, process and leadership.</p>
+    <div class="certs-grid">
+      <div class="cert"><div class="ci">🏅</div><div><b>Certified Scrum Master</b><span>Scrum Alliance</span></div></div>
+      <div class="cert"><div class="ci">🏅</div><div><b>Certified SAFe Agilist</b><span>Scaled Agile, Inc.</span></div></div>
+      <div class="cert"><div class="ci">📊</div><div><b>Kanban Professional Management Foundation</b><span>Kanban University</span></div></div>
+      <div class="cert"><div class="ci">👥</div><div><b>People &amp; Product Management, Team Leadership</b><span>Stratoplan</span></div></div>
+      <div class="cert"><div class="ci">🎯</div><div><b>Product Management Simulator</b><span>GoPractice</span></div></div>
+      <div class="cert"><div class="ci">🗣️</div><div><b>Business Coaching Course</b><span>+ Stratoplan Team Leadership Conf</span></div></div>
+    </div>
+    <div class="edu-lang">
+      <div class="edu-box">
+        <h3>🎓 Education</h3>
+        <p><b>Bachelor of Science — 2011</b><br>Management of Information Resources<br>Academy of Public Administration</p>
+      </div>
+      <div class="edu-box">
+        <h3>🌐 Languages</h3>
+        <div class="langs">
+          <div class="lang-row"><span>Belarusian · Russian · Ukrainian</span><span>Native</span></div>
+          <div class="lang-row"><span>English</span><span>B2</span></div>
+          <div class="lang-row"><span>Polish</span><span>A2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="sec-kicker">Contact</div>
+      <h2>Let's build the <span class="accent">next hit</span> together</h2>
+      <p class="sec-sub" style="margin-bottom:0">Open to Executive Producer / Head of Product / Studio Leadership roles. Based in Warsaw, Poland — happy to talk about games, teams and growth.</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:serge.meleshchuk@gmail.com"><div class="ci">✉️</div><div><b>serge.meleshchuk@gmail.com</b><span>Email — best way to reach me</span></div></a>
+      <a class="contact-link" href="https://www.linkedin.com/in/serge-meleshchuk" target="_blank" rel="noopener"><div class="ci">💼</div><div><b>linkedin.com/in/serge-meleshchuk</b><span>LinkedIn profile</span></div></a>
+      <a class="contact-link" href="https://wa.me/48571468609" target="_blank" rel="noopener"><div class="ci">📱</div><div><b>+48 571 468 609</b><span>WhatsApp / phone</span></div></a>
+      <a class="contact-link" href="cvdoc" download="Siarhei_Meliashchuk_CV.pdf"><div class="ci">📄</div><div><b>Download CV (PDF)</b><span>Full portfolio deck, 16 pages</span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Siarhei Meliashchuk · Executive Producer · Warsaw, Poland</footer>
+
+<script>
+// nav scroll state + burger
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
+const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+burger.onclick=()=>links.classList.toggle('open');
+links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.tl-item,.exp-card,.skill-card').forEach(el=>io.observe(el));
+
+// counters
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  const el=e.target,end=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',t0=performance.now();
+  (function tick(t){const p=Math.min((t-t0)/1200,1),v=Math.round(end*(1-Math.pow(1-p,3)));
+    el.textContent=pre+v+suf;if(p<1)requestAnimationFrame(tick)})(t0);
+}),{threshold:.6});
+document.querySelectorAll('.stat .num').forEach(el=>cio.observe(el));
+
+// experience accordion
+document.querySelectorAll('.exp-card').forEach(card=>{
+  const head=card.querySelector('.exp-head'),body=card.querySelector('.exp-body');
+  const set=()=>{body.style.maxHeight=card.classList.contains('open')?body.scrollHeight+'px':'0px'};
+  head.addEventListener('click',()=>{card.classList.toggle('open');set()});
+  head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();card.classList.toggle('open');set()}});
+  set();addEventListener('resize',set);
+});
+</script>
+</body>
+</html>
