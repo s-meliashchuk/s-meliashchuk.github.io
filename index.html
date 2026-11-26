@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <!-- Placeholder content for now: keep out of search engines. Remove once real content is in. -->
 <meta name="robots" content="noindex">
@@ -130,6 +130,31 @@
     html { scroll-behavior: auto; }
     .btn, .icon { transition: none; }
   }
+
+  /* Game player (opens over the page) */
+  body.playing { overflow: hidden; }
+  a:focus-visible, button:focus-visible { outline: 3px solid #8d70ef; outline-offset: 6px; }
+  dialog {
+    --left: max(12px, env(safe-area-inset-left)); --right: max(12px, env(safe-area-inset-right));
+    --top: max(12px, env(safe-area-inset-top)); --bottom: max(12px, env(safe-area-inset-bottom));
+    --game-width: min(calc((100dvh - var(--top) - var(--bottom)) * .5625), calc(100vw - var(--left) - var(--right) - 56px), 450px);
+    padding: 0; border: 0; background: transparent; color: white; max-width: none; max-height: none; overflow: visible;
+    width: calc(var(--game-width) + 56px); margin: auto;
+  }
+  dialog[open] { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: start; }
+  dialog::backdrop { background: #14101fef; backdrop-filter: blur(16px); }
+  dialog h2::after { content: none; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .back-button {
+    grid-column: 1; grid-row: 1; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; cursor: pointer;
+    border: 1px solid #ffffff24; background: #ffffff0c; border-radius: 50%; color: #e3ddec;
+  }
+  .back-button:hover { background: #ffffff20; }
+  .game-viewport {
+    grid-column: 2; grid-row: 1; position: relative; width: 100%; min-width: 0; aspect-ratio: 9 / 16;
+    background: #120d2b; border-radius: 18px; overflow: hidden; box-shadow: 0 18px 70px #0006; outline: 1px solid #ffffff18;
+  }
+  .game-viewport iframe { position: absolute; top: 0; left: 0; display: block; width: 450px; height: 800px; border: 0; transform-origin: top left; }
 </style>
 </head>
 <body>
@@ -140,40 +165,113 @@
     <h1>Portfolio</h1>
   </div>
 
-  <section id="work" style="padding-bottom:80px">
+  <section id="work">
     <div class="wrap">
-      <h2>Live products</h2>
+      <h2>Running products</h2>
       <div class="apps">
-        <a class="app" href="#work">
-          <span class="icon g1">+</span>
-          <span class="name"><span>Project one</span></span>
+        <a class="app" href="#play/neon-arrow-escape" data-game="neon-arrow-escape" data-title="Arrow Master Playable" aria-label="Play Arrow Master Playable">
+          <span class="icon"><img src="assets/neon-arrow-escape.svg" alt="" width="148" height="148"></span>
+          <span class="name">Arrow Master Playable</span>
         </a>
-        <a class="app" href="#work">
-          <span class="icon g2">+</span>
-          <span class="name"><span>Project two</span></span>
+        <a class="app" href="#play/slide-hustle" data-game="slide-hustle" data-title="Slide Hustle" aria-label="Play Slide Hustle">
+          <span class="icon"><img src="assets/slide-hustle.png" alt="" width="148" height="148"></span>
+          <span class="name">Slide Hustle</span>
         </a>
       </div>
     </div>
     <div class="wrap">
       <h2>New games</h2>
       <div class="apps">
-        <a class="app" href="#work">
-          <span class="icon g3">+</span>
-          <span class="name"><span>Project three</span></span>
+        <a class="app" href="#play/ring-master" data-game="ring-master" data-title="Ring Master" aria-label="Play Ring Master">
+          <span class="icon"><img src="assets/ring-master.png" alt="" width="148" height="148"></span>
+          <span class="name">Ring Master</span>
         </a>
-        <a class="app" href="#work">
-          <span class="icon g4">+</span>
-          <span class="name"><span>Project four</span></span>
+        <a class="app" href="#play/croc-escape" data-game="croc-escape" data-title="Croc Escape" aria-label="Play Croc Escape">
+          <span class="icon"><img src="assets/croc-escape.png" alt="" width="148" height="148"></span>
+          <span class="name">Croc Escape</span>
         </a>
-        <a class="app" href="#work">
-          <span class="icon g5">+</span>
-          <span class="name"><span>Project five</span></span>
+        <a class="app" href="#play/wordblock" data-game="wordblock" data-title="Wordblock" aria-label="Play Wordblock">
+          <span class="icon"><img src="assets/wordblock.png" alt="" width="148" height="148"></span>
+          <span class="name">Wordblock</span>
         </a>
       </div>
     </div>
   </section>
-
 </main>
+
+<dialog id="player" aria-labelledby="player-title">
+  <h2 id="player-title" class="visually-hidden"></h2>
+  <div class="game-viewport" id="game-viewport"></div>
+  <button id="close-player" class="back-button" type="button" aria-label="Back to portfolio" title="Back to portfolio"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg></button>
+</dialog>
+
+<script>
+(function () {
+  var player = document.getElementById('player');
+  var viewport = document.getElementById('game-viewport');
+  var closeButton = document.getElementById('close-player');
+  var activeId = null, returnFocus = null;
+
+  // Games are designed for 450x800; scale the frame to the available width.
+  function fitGame() {
+    var frame = viewport.querySelector('iframe');
+    if (frame && player.open) frame.style.transform = 'scale(' + viewport.getBoundingClientRect().width / 450 + ')';
+  }
+  new ResizeObserver(fitGame).observe(viewport);
+
+  function closePlayer() {
+    if (player.open) player.close();
+    viewport.replaceChildren();
+    activeId = null;
+    document.body.classList.remove('playing');
+    if (location.hash.indexOf('#play/') === 0) history.replaceState(null, '', location.pathname + location.search);
+    if (returnFocus) returnFocus.focus();
+  }
+
+  function syncPlayer() {
+    var id = location.hash.indexOf('#play/') === 0 ? location.hash.slice(6) : null;
+    var link = id && document.querySelector('[data-game="' + CSS.escape(id) + '"]');
+    if (!link) { if (player.open) closePlayer(); return; }
+    if (activeId === id) return;
+    returnFocus = link;
+    document.getElementById('player-title').textContent = link.dataset.title;
+    var frame = document.createElement('iframe');
+    frame.title = link.dataset.title + ' — game';
+    frame.src = 'games/' + id + '/';
+    frame.allow = 'autoplay; fullscreen';
+    frame.addEventListener('load', function () {
+      try {
+        frame.contentWindow.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') { e.preventDefault(); closePlayer(); }
+        });
+      } catch (_) {}
+    });
+    viewport.replaceChildren(frame);
+    activeId = id;
+    document.body.classList.add('playing');
+    if (!player.open) player.showModal();
+    fitGame();
+    closeButton.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('[data-game]');
+    if (!link || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    var hash = '#play/' + link.dataset.game;
+    if (location.hash === hash) syncPlayer(); else location.hash = hash;
+  });
+  closeButton.addEventListener('click', closePlayer);
+  player.addEventListener('cancel', function (e) { e.preventDefault(); closePlayer(); });
+  player.addEventListener('click', function (e) {
+    if (e.target !== player) return;
+    var r = player.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closePlayer();
+  });
+  window.addEventListener('hashchange', syncPlayer);
+  syncPlayer();
+})();
+</script>
 
 </body>
 </html>
