@@ -113,7 +113,7 @@
   ov.onclick=e=>{ if(e.target===ov) closeMod(); };
   document.getElementById('play').onclick=()=>{
     const mod=document.getElementById('modifier').value;
-    location.href=`${GAME}?pack=${PACK}&n=${picked-1}&mod=${mod}`;
+    location.href=new URL(`${GAME}?pack=${PACK}&n=${picked-1}&mod=${mod}`,document.baseURI).href;
   };
 </script>
 </body></html>
