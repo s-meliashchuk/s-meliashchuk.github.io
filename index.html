@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light">
 <!-- Placeholder content for now: keep out of search engines. Remove once real content is in. -->
 <meta name="robots" content="noindex">
-<title>Siarhei Meliashchuk — Portfolio</title>
+<title>Portfolio</title>
 <meta name="description" content="Portfolio of Siarhei Meliashchuk.">
 <style>
   :root {
@@ -43,12 +43,13 @@
   nav a:hover { color: var(--ink); }
 
   /* Hero */
-  .hero { padding-top: 72px; padding-bottom: 40px; }
+  .hero { padding-top: 64px; padding-bottom: 28px; }
+  .who { margin: 0 0 6px; font-size: 20px; font-weight: 500; color: var(--muted); }
   .eyebrow {
     display: inline-block; font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
     color: var(--muted); margin-bottom: 16px;
   }
-  h1 { font-size: clamp(40px, 6.4vw, 68px); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 20px; font-weight: 700; }
+  h1 { font-size: clamp(40px, 6.4vw, 68px); line-height: 1.05; letter-spacing: -0.03em; margin: 0; font-weight: 700; }
   .lead { font-size: clamp(18px, 2.1vw, 21px); color: var(--muted); max-width: 640px; margin: 0 0 30px; }
   .cta { display: flex; flex-wrap: wrap; gap: 12px; }
   .btn {
@@ -133,59 +134,23 @@
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="#top">Siarhei Meliashchuk</a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
 <main id="top">
   <div class="wrap hero">
-    <span class="eyebrow ph">Your role, e.g. Game Designer</span>
-    <h1>Siarhei Meliashchuk</h1>
-    <p class="lead ph">One or two sentences about what you do and what you are great at. This is the first thing a visitor reads.</p>
-    <div class="cta">
-      <a class="btn primary" href="#work">See my work</a>
-      <a class="btn" href="#contact">Get in touch</a>
-    </div>
+    <p class="who">Siarhei Meliashchuk</p>
+    <h1>Portfolio</h1>
   </div>
 
-  <section id="about">
-    <div class="wrap">
-      <h2>About</h2>
-      <p class="sub">A short story: who you are, your experience, what you are looking for.</p>
-      <div class="about">
-        <div class="photo">Your photo</div>
-        <div>
-          <p class="ph">First paragraph: your background and how many years you have been in the field.</p>
-          <p class="ph">Second paragraph: what kind of projects you enjoy and what you bring to a team.</p>
-          <div class="facts">
-            <div class="fact"><b>00</b><span>years of experience</span></div>
-            <div class="fact"><b>00</b><span>projects shipped</span></div>
-            <div class="fact"><b>00</b><span>a number you are proud of</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="work">
+  <section id="work" style="padding-bottom:80px">
     <div class="wrap">
       <h2>Live products</h2>
       <div class="apps">
         <a class="app" href="#work">
           <span class="icon g1">+</span>
-          <span class="name"><span>Project one</span><span class="note">icon and link</span></span>
+          <span class="name"><span>Project one</span></span>
         </a>
         <a class="app" href="#work">
           <span class="icon g2">+</span>
-          <span class="name"><span>Project two</span><span class="note">icon and link</span></span>
+          <span class="name"><span>Project two</span></span>
         </a>
       </div>
     </div>
@@ -194,58 +159,21 @@
       <div class="apps">
         <a class="app" href="#work">
           <span class="icon g3">+</span>
-          <span class="name"><span>Project three</span><span class="note">icon and link</span></span>
+          <span class="name"><span>Project three</span></span>
         </a>
         <a class="app" href="#work">
           <span class="icon g4">+</span>
-          <span class="name"><span>Project four</span><span class="note">icon and link</span></span>
+          <span class="name"><span>Project four</span></span>
         </a>
         <a class="app" href="#work">
           <span class="icon g5">+</span>
-          <span class="name"><span>Project five</span><span class="note">icon and link</span></span>
+          <span class="name"><span>Project five</span></span>
         </a>
       </div>
     </div>
   </section>
 
-  <section id="skills">
-    <div class="wrap">
-      <h2>Skills</h2>
-      <p class="sub">Group what you can do into two or three columns.</p>
-      <div class="skills">
-        <div>
-          <h3>Group one</h3>
-          <ul><li>Skill</li><li>Skill</li><li>Skill</li></ul>
-        </div>
-        <div>
-          <h3>Group two</h3>
-          <ul><li>Skill</li><li>Skill</li><li>Skill</li></ul>
-        </div>
-        <div>
-          <h3>Tools</h3>
-          <ul><li>Tool</li><li>Tool</li><li>Tool</li></ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2>Contact</h2>
-      <p class="sub">Tell visitors how to reach you. The buttons below are placeholders.</p>
-      <div class="cta">
-        <a class="btn primary" href="#contact">Email</a>
-        <a class="btn" href="#contact">LinkedIn</a>
-        <a class="btn" href="#contact">Telegram</a>
-      </div>
-    </div>
-  </section>
 </main>
 
-<footer>
-  <div class="wrap">© <span id="year">2026</span> Siarhei Meliashchuk</div>
-</footer>
-
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
