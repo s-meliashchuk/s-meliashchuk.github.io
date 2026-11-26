@@ -233,6 +233,7 @@
   var viewport = document.getElementById('game-viewport');
   var closeButton = document.getElementById('close-player');
   var activeId = null, returnFocus = null;
+  var BUILD = '20261127b';
 
   // Games are designed for 450x800; scale the frame to the available width.
   function fitGame() {
@@ -259,7 +260,7 @@
     document.getElementById('player-title').textContent = link.dataset.title;
     var frame = document.createElement('iframe');
     frame.title = link.dataset.title + ' — game';
-    frame.src = 'games/' + id + '/';
+    frame.src = 'games/' + id + '/?v=' + BUILD; // version stamp so browsers never show a stale cached game
     frame.allow = 'autoplay; fullscreen';
     frame.addEventListener('load', function () {
       try {

@@ -1209,7 +1209,15 @@ i.pspile .ico,i.pspile svg{width:100%;height:100%}
 .trc.on{animation:trGlow2 1.8s ease-in-out infinite}
 @keyframes trGlow2{50%{box-shadow:0 0 0 calc(var(--u)*5) #f6c241,0 0 0 calc(var(--u)*8) #9a5606,0 calc(var(--u)*10) 0 calc(var(--u)*8) #7a4204,0 0 calc(var(--u)*34) calc(var(--u)*12) rgba(255,230,120,.6)}}
 .trc .trtop{background:repeating-conic-gradient(from 0deg at 50% 55%,rgba(255,255,255,.6) 0 7deg,rgba(255,255,255,0) 7deg 16deg),radial-gradient(80% 80% at 50% 55%,#fffbf2,#fbedcf 60%,#f3dcae)}
-.lvfix{position:absolute;left:16%;top:57%;width:70%;height:27%;display:flex;align-items:center;justify-content:center;background:#3a5290;border-radius:18%/45%;color:#fff;font-weight:700;font-size:calc(var(--u)*21);letter-spacing:.01em;pointer-events:none;white-space:nowrap}</style>
+.lvfix{position:absolute;left:16%;top:57%;width:70%;height:27%;display:flex;align-items:center;justify-content:center;background:#3a5290;border-radius:18%/45%;color:#fff;font-weight:700;font-size:calc(var(--u)*21);letter-spacing:.01em;pointer-events:none;white-space:nowrap}
+/* one-row HUD: pill and counter labels were dark, unoutlined and hard to read — white with an outline like the rest of the UI */
+#coinPill #coinText,#mCoinText,.mpill.lives .ht,#movesBox b{
+  color:#fff;-webkit-text-stroke:calc(var(--u)*5) #4a2606;paint-order:stroke fill;
+  text-shadow:0 calc(var(--u)*2.5) 0 #4a2606
+}
+#movesBox.low b{color:#ff5a4d}
+#btnHome,#btnRestart{display:none!important}
+</style>
 </head>
 <body>
 <div id="stage">
@@ -1751,18 +1759,17 @@ function place(el, key, x, y, bodyW, pad = 6) {
 }
 function layoutHUD() {
   const u = L.u, H = L.H, st = L.safeTop / u;
-  // row 1 (very top): Home + Settings in the UI-kit style; row 2 below it: coins, level, restart
-  const row1 = 24 + st, top = row1 + 92;
-  place($('#btnHome'), 'kHome', 22, row1, 66, 0);
+  // One row at the very top: coins, level, settings. Home and Restart are gone from the HUD (Home lives in Settings).
+  const row1 = 24 + st, top = row1;
+  for (const id of ['#btnHome', '#btnRestart']) $(id).style.display = 'none';
   place($('#btnGear'), 'kGear', 606 - 22 - 66, row1, 66, 0);
-  const wt = $('#worldTag'); if (wt) { wt.style.left = 104 * u + 'px'; wt.style.width = 398 * u + 'px'; wt.style.top = row1 * u + 'px'; wt.style.height = 70 * u + 'px'; }
+  const wt = $('#worldTag'); if (wt) wt.style.display = 'none';
   const cp = $('#coinPill'); cp.classList.add('kpill');
-  Object.assign(cp.style, { left: 34 * u + 'px', top: (top + 6) * u + 'px', width: 150 * u + 'px', height: 58 * u + 'px', backgroundImage: 'none' });
+  Object.assign(cp.style, { left: 34 * u + 'px', top: (row1 + 4) * u + 'px', width: 150 * u + 'px', height: 58 * u + 'px', backgroundImage: 'none' });
   if (!cp.querySelector('.hcoin')) { const c = document.createElement('span'); c.className = 'hcoin'; c.style.backgroundImage = `url(${AM('coin').d})`; cp.prepend(c); }
   const lc = $('#levelChip'); lc.classList.add('klevel');
-  Object.assign(lc.style, { left: 206 * u + 'px', top: (top + 4) * u + 'px', width: 194 * u + 'px', height: 62 * u + 'px', backgroundImage: 'none' });
+  Object.assign(lc.style, { left: 206 * u + 'px', top: (row1 + 2) * u + 'px', width: 194 * u + 'px', height: 62 * u + 'px', backgroundImage: 'none' });
   const lt = $('#levelText'); lt.style.left = '0'; lt.style.width = '100%';
-  place($('#btnRestart'), G.restartHot ? 'kRestartOn' : 'kRestart', 606 - 22 - 66, top - 6, 66, 0);
   const mb = $('#movesBox'); if (mb) Object.assign(mb.style, { left: (303 - 78) * u + 'px', top: (top + 74) * u + 'px', width: 156 * u + 'px', height: 76 * u + 'px' });
   L.hudBottom = top + 156;
   const sb = L.safeBot / u;
